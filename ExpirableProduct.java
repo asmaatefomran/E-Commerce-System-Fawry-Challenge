@@ -16,7 +16,8 @@ public class ExpirableProduct extends Product implements Expirable {
     }
     @Override
     public boolean isExpired() {
-        return false;
+        return LocalDate.now().isAfter(expiryDate);
     }
+
 
 }

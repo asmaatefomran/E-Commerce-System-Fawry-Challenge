@@ -9,6 +9,9 @@ public class Storage {
     public Storage(HashMap<String,Product> stock) {
         this.stock = stock;
     }
+    public Product getProduct(String productName) {
+        return stock.get(productName);
+    }
     public void UpdateStockOfProduct(String itemName, int newQuantity) {
         if(stock.containsKey(itemName)) {
             stock.get(itemName).updateQuantity(newQuantity);
@@ -42,8 +45,8 @@ public class Storage {
             System.out.println("Product already exists");
         }
         else{
-           // Product newProduct=new ExpirableShippableProduct(productName, price, quantity, expiryDate,weight);
-          //  stock.put(productName, newProduct);
+           Product newProduct=new ExpirableShippableProduct(productName, price, quantity, expiryDate,weight);
+           stock.put(productName, newProduct);
         }
     }
     public void addProduct(String productName, Double price, int quantity) {
@@ -65,11 +68,9 @@ public class Storage {
     }
     public Double buyProduct(String productName, int quantity) {
         if(enoughStockForProduct(productName, quantity)) {
-            System.out.println(productName+' '+quantity+" | "+stock.get(productName).getPrice()*quantity);
             stock.get(productName).setQuantity(stock.get(productName).getQuantity()-quantity);
             return stock.get(productName).getPrice()*quantity;
         }else{
-            System.out.println("The available Quantity is not enough");
             return 0.0;
         }
     }
