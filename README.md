@@ -3,7 +3,7 @@
 
 ---
 
-## 🛠 Description
+##  Description
 
 This is a console-based **E-Commerce System** implemented in **Java**, designed to simulate a minimal shopping cart experience with support for:
 
